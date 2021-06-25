@@ -151,63 +151,63 @@ namespace WebApplication1.Controllers
             return _context.Document.Any(e => e.ID == id);
         }
 
-        //FileUpload to folder
-        //***************
+        ////FileUpload to folder
+        ////***************
 
-        //Fehlermeldung:
-        //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
+        ////Fehlermeldung:
+        ////    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
 
-        //private const string uploadPath = "UploadFolder";
+        ////private const string uploadPath = "UploadFolder";
 
-        // In dem Beispiel aus dem Unterricht (Upload/Download) klappt das so
-        private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
-
-
+        //// In dem Beispiel aus dem Unterricht (Upload/Download) klappt das so
+        //private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
 
 
 
 
-        //DER PART FEHLT HIER JA!!! ... Die Index von dem Upload!!
-        //     public IActionResult Index()
+
+
+        ////DER PART FEHLT HIER JA!!! ... Die Index von dem Upload!!
+        ////     public IActionResult Index()
+        ////{
+        ////    return View();
+        ////}
+        //    // ??? Das ganze in den Homecontroller schicken
+
+
+
+
+
+        //[HttpPost]
+        //public IActionResult UploadFile(IFormFile dieDatei)
         //{
-        //    return View();
+        //    if (dieDatei == null || dieDatei.Length == 0)
+        //    {
+        //        return Content("You did not choose a file or the file is empty");
+        //    }
+
+        //    string path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, Path.GetFileName(dieDatei.FileName));
+
+        //    using (FileStream stream = new FileStream(path, FileMode.Create))
+        //    {
+        //        dieDatei.CopyTo(stream);
+        //    }
+
+        //    DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
+        //    FileInfo[] files = di.GetFiles();
+
+        //    return RedirectToAction("ShowFiles");
+
         //}
-            // ??? Das ganze in den Homecontroller schicken
 
+        //public IActionResult ShowFiles()
+        //{
+        //    DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
 
+        //    FileInfo[] files = di.GetFiles();
 
-
-
-        [HttpPost]
-        public IActionResult UploadFile(IFormFile dieDatei)
-        {
-            if (dieDatei == null || dieDatei.Length == 0)
-            {
-                return Content("You did not choose a file or the file is empty");
-            }
-
-            string path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, Path.GetFileName(dieDatei.FileName));
-
-            using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                dieDatei.CopyTo(stream);
-            }
-
-            DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
-            FileInfo[] files = di.GetFiles();
-
-            return RedirectToAction("ShowFiles");
-
-        }
-
-        public IActionResult ShowFiles()
-        {
-            DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
-
-            FileInfo[] files = di.GetFiles();
-
-            return View(files);
-        }
+        //    return View(files);
+        //}
 
 
 
