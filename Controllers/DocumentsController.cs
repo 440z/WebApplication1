@@ -155,7 +155,19 @@ namespace WebApplication1.Controllers
         //***************
 
         //private const string uploadPath = "UploadFolder";
+        // In dem Beispiel aus dem Unterricht (Upload/Download) klappt das so
         private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
+
+
+
+
+        //DER PART FEHLT HIER JA!!! ... Die Index von dem Upload!!
+        //     public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+
         //Fehlermeldung:
         //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
 
