@@ -154,7 +154,11 @@ namespace WebApplication1.Controllers
         //FileUpload to folder
         //***************
 
-        private const string uploadPath = "UploadFolder";
+        //private const string uploadPath = "UploadFolder";
+        private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
+        //Fehlermeldung:
+        //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
+
         // C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\
 
         [HttpPost]
