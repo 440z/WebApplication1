@@ -178,6 +178,14 @@ namespace WebApplication1.Controllers
 
         }
 
+        public IActionResult ShowFiles()
+        {
+            DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
+
+            FileInfo[] files = di.GetFiles();
+
+            return View(files);
+        }
 
 
 
