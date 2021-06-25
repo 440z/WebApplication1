@@ -13,12 +13,12 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
 
         public IActionResult Index()
         {
@@ -42,10 +42,10 @@ namespace WebApplication1.Controllers
         //Fehlermeldung:
         //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
 
-        //private const string uploadPath = "UploadFolder";
+        private const string uploadPath = "UploadFolder";
 
         // In dem Beispiel aus dem Unterricht (Upload/Download) klappt das so
-        private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
+        //private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
 
         [HttpPost]
         public IActionResult UploadFile(IFormFile dieDatei)
@@ -57,6 +57,8 @@ namespace WebApplication1.Controllers
 
             string path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, Path.GetFileName(dieDatei.FileName));
 
+            //Fehlermeldung:
+            //System.IO.IOException: "The process cannot access the file 'C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\TestUploadFile.txt' because it is being used by another process."
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 dieDatei.CopyTo(stream);
