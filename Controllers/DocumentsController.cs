@@ -154,9 +154,15 @@ namespace WebApplication1.Controllers
         //FileUpload to folder
         //***************
 
+        //Fehlermeldung:
+        //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
+
         //private const string uploadPath = "UploadFolder";
+
         // In dem Beispiel aus dem Unterricht (Upload/Download) klappt das so
         private const string uploadPath = @"C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\";
+
+
 
 
 
@@ -166,12 +172,11 @@ namespace WebApplication1.Controllers
         //{
         //    return View();
         //}
+            // ??? Das ganze in den Homecontroller schicken
 
 
-        //Fehlermeldung:
-        //    Für folgende Webadresse wurde keine Webseite gefunden: https://localhost:44349/Home/UploadFile
 
-        // C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\
+
 
         [HttpPost]
         public IActionResult UploadFile(IFormFile dieDatei)
