@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -148,5 +150,37 @@ namespace WebApplication1.Controllers
         {
             return _context.Document.Any(e => e.ID == id);
         }
+
+        //FileUpload to folder
+        //***************
+
+        private const string uploadPath = "UploadFolder";
+
+        [HttpPost]
+        public IActionResult UploadFile(IFormFile dieDatei)
+        {
+            if (dieDatei == null || dieDatei.Length == 0)
+            {
+                return Content("You did not choose a file or the file is empty");
+            }
+
+            string path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, Path.GetFileName(dieDatei.FileName));
+
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                dieDatei.CopyTo(stream);
+            }
+
+            DirectoryInfo di = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), uploadPath));
+            FileInfo[] files = di.GetFiles();
+
+            return RedirectToAction("ShowFiles");
+
+        }
+
+
+
+
+
     }
 }
