@@ -57,8 +57,6 @@ namespace WebApplication1.Controllers
 
             string path = Path.Combine(Directory.GetCurrentDirectory(), uploadPath, Path.GetFileName(dieDatei.FileName));
 
-            //Fehlermeldung:
-            //System.IO.IOException: "The process cannot access the file 'C:\Users\Windows10\OneDrive - IT-Akademie Dr. Heuer GmbH\git\WebApplication1\UploadFolder\TestUploadFile.txt' because it is being used by another process."
             using (FileStream stream = new FileStream(path, FileMode.Create))
             {
                 dieDatei.CopyTo(stream);
@@ -77,6 +75,8 @@ namespace WebApplication1.Controllers
 
             FileInfo[] files = di.GetFiles();
 
+            //Fehlermeldung:
+            //InvalidOperationException: The view 'ShowFiles' was not found. The following locations were searched: /Views/Home/ShowFiles.cshtml /Views/Shared/ShowFiles.cshtml
             return View(files);
         }
     }
